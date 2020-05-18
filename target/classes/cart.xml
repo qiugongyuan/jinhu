@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="测试结果">
+    <test name="trading-openservice">
+        <classes>
+            <class name="com.gome.trading.openservice.client.add.AddTest"></class>
+            <class name="com.gome.trading.openservice.client.checkout.CheckoutTest"></class>
+            <class name="com.gome.trading.openservice.client.delete.DeleteTest"></class>
+            <class name="com.gome.trading.openservice.client.query.QueryTest"></class>
+            <class name="com.gome.trading.openservice.client.update.UpdateTest"></class>
+            <!--参数待重生成-->
+            <class name="com.gome.trading.openservice.client.mergeCart.MergeCartTest"></class>
+            <class name="com.gome.trading.openservice.client.commitOrder.CommitOrderTest"></class>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="com.gome.testng.report.ReportListener"/>
+    </listeners>
+</suite>
+
+

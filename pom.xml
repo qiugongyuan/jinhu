@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dspt-cart</groupId>
+    <artifactId>com.gome.auto</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.gome</groupId>
+            <artifactId>trading-openservice-client</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gome.auto</groupId>
+            <artifactId>testng.utility</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gome.plugin</groupId>
+            <artifactId>auto-maven-plugin</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.gome.plugin</groupId>
+                <artifactId>auto-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <!--<skipTests>true</skipTests>-->
+                    <systemPropertyVariables>
+                        <ENV>$evn</ENV>
+                        <GROUP>$group</GROUP>
+                        <URL>$url</URL>
+                        <VERSION>$version</VERSION>
+                        <TIMEOUT>$timeout</TIMEOUT>
+                    </systemPropertyVariables>
+                    <!--<property>-->
+                    <!--<name>listener</name>-->
+                    <!--<value>com.gome.test.report.TestngListener</value>-->
+                    <!--</property>-->
+                    <suiteXmlFiles>
+                            <suiteXmlFile>${project.basedir}/src/main/resources/${suiteXmlFile}.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <properties>
+                        <!-- Setting ReportNG listeners -->
+                        <property>
+                            <name>listener</name>
+                            <value>com.gome.testng.report.ReportListener</value>
+                        </property>
+                    </properties>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
